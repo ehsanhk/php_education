@@ -2,14 +2,10 @@
 <?php
 session_start();
 
-echo "<pre>";
+if(empty($_SESSION['user_id'])){
 
-var_dump("wellcome");
-
-echo "</pre>";
-echo "_SESSION =>" . $_SESSION['user_id'];
-
+    header("Location: login.php");
+    exit();
+}
 
 include "view/index.html";
-
-

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +29,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>ورود به سایت</b></a>
+    <a href="../../index2.html"><b>ثبت نام</b></a>
   </div>
   <!-- /.login-logo -->
+
+
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">فرم زیر را تکمیل کنید و ورود بزنید</p>
@@ -37,9 +42,21 @@
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="نام کاربری" name="username">
           <div class="input-group-append">
-            <span class="fa fa-envelope input-group-text"></span>
+            <span class="fa fa-user input-group-text"></span>
           </div>
         </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="ایمیل" name="email">
+            <div class="input-group-append">
+              <span class="fa fa-envelope input-group-text"></span>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="شماره همراه" name="phone">
+            <div class="input-group-append">
+              <span class="fa fa-phone input-group-text"></span>
+            </div>
+          </div>
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="رمز عبور" name="password">
           <div class="input-group-append">
@@ -51,10 +68,10 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">ورود</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">ثبت نام</button>
           </div>
           <div class="col-12  mt-2">
-            <a  class="btn btn-primary btn-block btn-flat" href="register.php">ثبت نام</a>
+            <a  class="btn btn-primary btn-block btn-flat" href="login.php">ورود</a>
           </div>
           <!-- /.col -->
         </div>

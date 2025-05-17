@@ -1,18 +1,29 @@
 <?php
+
+include "./helper.php";
+include "./view/login.html";
 session_start();
+$connection = connetion();
+
 /*
-| request 
+| request validation
 */
 $requestUsername = $_REQUEST['username'] ?? null;
 $requestPassword = $_REQUEST['password'] ?? null;
-$userData = select("SELECT * FROM `users` WHERE `username` = '$requestUsername'; ")[0] ?? null;
 
-include "./view/login.html";
+if(empty($requestUsername) 
+|| empty($requestPassword)
+){
 
+    echo "empty username or password";
+    return;
+}
 
-
-
-
+/*
+| validation 
+|
+*/
+$userData = select($connection,"SELECT * FROM `users` WHERE `username` = '$requestUsername'; ")[0] ?? null;
 if(empty($userData)){
 
     echo "username is not empty";
@@ -22,51 +33,6 @@ if(empty($userData)){
 /*
 | logic
 */
- try {
+$_SESSION['user_id'] = $userData['id'];
 
-    $_SESSION['user_id'] = $userData['id'];
-    
-    header("Location: index.php");
-
-    
-
-
-}catch(Throwable $error){
-
-
-    var_dump($error->getMessage());
-}
-
-
-/*
-|   database section
-*/
-function execute($query){
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    $connection = new PDO("mysql:host=$servername;dbname=test",$username,$password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-    $connection->exec($query);
-}
-
-
-function select($query){
-    /** connection setting */
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    
-    $connection = new PDO("mysql:host=$servername;dbname=test",$username,$password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    /** end connection setting */
-
-    $data = $connection->prepare($query);
-    $data->execute();
-    $data->setFetchMode(PDO::FETCH_ASSOC);
-
-   return $data->fetchAll();
-}
+header("Location: index.php");
